@@ -5,6 +5,8 @@ RUN apk add curl jq
 # WorkSpace
 WORKDIR /usr/shared
 
+RUN echo "$PWD"
+
 #Add .jar files to the workspace
 ADD target/JavaFrameworkDemo-0.0.1-SNAPSHOT.jar			JavaFrameworkDemo-0.0.1-SNAPSHOT.jar
 ADD target/JavaFrameworkDemo-0.0.1-SNAPSHOT-tests.jar	JavaFrameworkDemo-0.0.1-SNAPSHOT-tests.jar

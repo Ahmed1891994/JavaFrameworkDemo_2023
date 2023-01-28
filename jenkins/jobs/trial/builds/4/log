@@ -1,0 +1,48 @@
+Started by user [8mha:////4B08NXSutiz/YcQejc72i1Mxpriw9b6UTnmoSDDtq58nAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xIzc1BQAJbgqK8AAAAA=[0mahmed
+Running as SYSTEM
+Building remotely on [8mha:////4KaXVmRaLlz9x3wmV21QHFgsYBIF1ZH9tTXljSx8jm1mAAAAnR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAwOoBn6yfm5BaUlqUX6uYnJGZl5qREAHCtsd8cAAAA=[0mmachineX in workspace c:\jenkins\workspace\trial
+[trial] $ sh -xe C:\Users\DELL01~1\AppData\Local\Temp\jenkins14349598450560525880.sh
+The system cannot find the file specified
+FATAL: command execution failed
+java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.base/java.lang.ProcessImpl.create(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:499)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:158)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)
+Also:   hudson.remoting.Channel$CallSiteStackTrace: Remote call to JNLP4-connect connection from 172.17.0.1/172.17.0.1:56406
+		at hudson.remoting.Channel.attachCallSiteStackTrace(Channel.java:1784)
+		at hudson.remoting.UserRequest$ExceptionResponse.retrieve(UserRequest.java:356)
+		at hudson.remoting.Channel.call(Channel.java:1000)
+		at hudson.Launcher$RemoteLauncher.launch(Launcher.java:1124)
+		at hudson.Launcher$ProcStarter.start(Launcher.java:509)
+		at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:144)
+		at hudson.tasks.CommandInterpreter.perform(CommandInterpreter.java:92)
+		at hudson.tasks.BuildStepMonitor$1.perform(BuildStepMonitor.java:20)
+		at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:818)
+		at hudson.model.Build$BuildExecution.build(Build.java:199)
+		at hudson.model.Build$BuildExecution.doRun(Build.java:164)
+		at hudson.model.AbstractBuild$AbstractBuildExecution.run(AbstractBuild.java:526)
+		at hudson.model.Run.execute(Run.java:1900)
+		at hudson.model.FreeStyleBuild.run(FreeStyleBuild.java:44)
+		at hudson.model.ResourceController.execute(ResourceController.java:107)
+		at hudson.model.Executor.run(Executor.java:449)
+Caused: java.io.IOException: Cannot run program "sh" (in directory "c:\jenkins\workspace\trial"): CreateProcess error=2, The system cannot find the file specified
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1143)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)
+	at hudson.Proc$LocalProc.<init>(Proc.java:254)
+	at hudson.Proc$LocalProc.<init>(Proc.java:223)
+	at hudson.Launcher$LocalLauncher.launch(Launcher.java:997)
+	at hudson.Launcher$ProcStarter.start(Launcher.java:509)
+	at hudson.Launcher$RemoteLaunchCallable.call(Launcher.java:1398)
+	at hudson.Launcher$RemoteLaunchCallable.call(Launcher.java:1340)
+	at hudson.remoting.UserRequest.perform(UserRequest.java:211)
+	at hudson.remoting.UserRequest.perform(UserRequest.java:54)
+	at hudson.remoting.Request$2.run(Request.java:377)
+	at hudson.remoting.InterceptingExecutorService.lambda$wrap$0(InterceptingExecutorService.java:78)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at hudson.remoting.Engine$1.lambda$newThread$0(Engine.java:125)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

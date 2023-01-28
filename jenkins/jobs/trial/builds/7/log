@@ -1,0 +1,11 @@
+Started by user [8mha:////4B08NXSutiz/YcQejc72i1Mxpriw9b6UTnmoSDDtq58nAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xIzc1BQAJbgqK8AAAAA=[0mahmed
+Running as SYSTEM
+Building remotely on [8mha:////4KaXVmRaLlz9x3wmV21QHFgsYBIF1ZH9tTXljSx8jm1mAAAAnR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAwOoBn6yfm5BaUlqUX6uYnJGZl5qREAHCtsd8cAAAA=[0mmachineX in workspace c:\jenkins\workspace\trial
+[trial] $ cmd /c call C:\Users\DELL01~1\AppData\Local\Temp\jenkins5597772930181474994.bat
+
+c:\jenkins\workspace\trial>docker ps 
+CONTAINER ID   IMAGE                 COMMAND                  CREATED       STATUS       PORTS                                              NAMES
+4a0a0e572a67   jenkins/jenkins:lts   "/usr/bin/tini -- /u…"   4 hours ago   Up 4 hours   0.0.0.0:8080->8080/tcp, 0.0.0.0:50000->50000/tcp   pedantic_galois
+
+c:\jenkins\workspace\trial>exit 0 
+Finished: SUCCESS

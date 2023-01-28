@@ -11,6 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
+                bat "docker-compose up -d"
                 bat "docker build -t=selenium-docker/selenium-docker ."
             }
         }

@@ -5,14 +5,14 @@ pipeline {
         stage('Build Jar') {
             steps {
                 //sh
-                //bat "mvn clean package -Denv=prod"
-                bat "docker-compose up -d"
+                bat "mvn clean package"
+                
             }
         }
         stage('Build Image') {
             steps {
                 //sh
-                
+                bat "docker-compose up -d"
                 bat "docker build -t=selenium-docker/selenium-docker ."
             }
         }

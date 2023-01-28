@@ -5,7 +5,7 @@ pipeline {
         stage('Build Jar') {
             steps {
                 //sh
-                //bat "mvn clean package"
+                bat "mvn clean package -Denv=prod"
                 bat "docker-compose up -d"
             }
         }

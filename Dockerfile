@@ -6,9 +6,9 @@ RUN apk add curl jq
 WORKDIR /usr/shared
 
 #Add .jar files to the workspace
-ADD target/JavaFrameworkDemo-0.0.1-SNAPSHOT.jar			JavaFrameworkDemo-0.0.1-SNAPSHOT.jar
-ADD target/JavaFrameworkDemo-0.0.1-SNAPSHOT-tests.jar	JavaFrameworkDemo-0.0.1-SNAPSHOT-tests.jar
-ADD target/libs											libs
+ADD target/JavaFrameworkDemo-0.0.1-SNAPSHOT.jar			.
+ADD target/JavaFrameworkDemo-0.0.1-SNAPSHOT-tests.jar	.
+ADD target/libs											.
 
 # Add suitefiles
 ADD testng.xml											testng.xml

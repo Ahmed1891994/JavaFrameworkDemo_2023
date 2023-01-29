@@ -22,7 +22,7 @@ pipeline {
                     //sh
                     bat "echo ${user}"
                     bat "echo ${pass}"
-			        bat "docker login --username=${user} --password=this.env['pass']"
+			        bat "docker login --username=${user} --password=${pass}"
 			        bat "docker push selenium-docker/selenium-docker:latest"
 			    }                           
             }

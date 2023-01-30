@@ -13,16 +13,16 @@ pipeline {
             steps {
                 //sh
                 //bat "docker-compose up -d"
-                bat "docker build -t=selenium-docker/selenium-docker ."
+                bat "docker build -t=selenium-docker ."
             }
         }
         stage('Push Image') {
             steps {
 			    withCredentials([usernamePassword(credentialsId: 'dockerhub_cred', passwordVariable: 'pass', usernameVariable: 'user')]) {
 			        bat "docker login --username=${user} --password=${pass}"
-			        bat "docker tag selenium-docker/selenium-docker ${user}/selenium-docker/selenium-docker"
+			        bat "docker tag selenium-docker ${user}/selenium-docker:selenium-docker"
 			        bat "docker images"
-			        bat "docker push ${user}/selenium-docker/selenium-docker:selenium-docker/selenium-docker"
+			        bat "docker push ${user}/selenium-docker:selenium-docker"
 			    }                           
             }
         }

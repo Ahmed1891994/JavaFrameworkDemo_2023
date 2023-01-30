@@ -32,7 +32,7 @@ services:
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
    testng-module:
-      image: selenium-docker/selenium-docker
+      image: selenium-docker
       depends_on: 
          - chrome
          - firefox   

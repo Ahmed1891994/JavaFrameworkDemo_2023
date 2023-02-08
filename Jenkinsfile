@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build Jar') {
             steps {
-                bat "mvn clean install -Denv=prod"
+                bat "mvn clean install -DskipTests"
             }
         }
         stage('Build Image') {

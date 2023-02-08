@@ -14,9 +14,6 @@ public interface Environment extends Config  {
 	@Key("url.base")
 	 String geturlBase();
 	
-	@Key("grid.url")
-	 String getgridurl();
-	
 	@Key("grid.port")
 	 String getgridport();
 }

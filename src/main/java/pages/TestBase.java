@@ -1,5 +1,6 @@
 package pages;
 
+import java.net.UnknownHostException;
 import java.util.Properties;
 
 import org.aeonbits.owner.ConfigFactory;
@@ -32,7 +33,7 @@ public class TestBase {
 	@Step
 	@Parameters({"browserName"})
     @BeforeMethod
-    public void InitializeEnvironment(String browserName) {
+    public void InitializeEnvironment(String browserName){
 		//make instance of fake user to make fake data
 		setFakerDataUser(new FakerDataUser());
 		

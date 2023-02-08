@@ -35,7 +35,8 @@ services:
       image: selenium-docker
       depends_on: 
          - chrome
-         - firefox   
+         - firefox
+         - edge
       environment: 
          - HUB_HOST=hub
          - MODULE=testng.xml

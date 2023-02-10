@@ -1,0 +1,27 @@
+pipeline {
+    // master executor should be set to 0
+    agent any
+    stages {
+    	stage("Start Pull Latest Image"){
+    		steps {
+    	     	bat "docker pull ahmedhakem/selenium-docker:selenium-docker"
+    	    }	
+    	}
+    	//stage("Start Grid"){
+    	//     steps {
+    	     	//bat "docker-compose up -d hub firefox edge chrome"
+    	//    }
+    	//}
+    	stage("Run Tests"){
+    	     steps {
+    	     	bat "docker-compose up testng-module"
+    	    }
+    	}
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'testng_results/**'
+            //bat "docker-compose down"
+        }
+    }
+}

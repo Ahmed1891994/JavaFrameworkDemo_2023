@@ -1,0 +1,48 @@
+version: "3"
+services: 
+   hub: 
+      image: selenium/hub
+      ports:
+         - "4444:4444"
+   chrome: 
+      image: selenium/node-chrome
+      depends_on: 
+         - hub
+      environment: 
+         - HUB_HOST=hub
+         - SE_EVENT_BUS_HOST=hub
+         - SE_EVENT_BUS_PUBLISH_PORT=4442
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+   firefox:
+      image: selenium/node-firefox
+      depends_on: 
+         - hub
+      environment: 
+         - HUB_HOST=hub
+         - SE_EVENT_BUS_HOST=hub
+         - SE_EVENT_BUS_PUBLISH_PORT=4442
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443               
+   edge: 
+      image: selenium/node-edge
+      depends_on: 
+         - hub
+      environment: 
+         - HUB_HOST=hub
+         - SE_EVENT_BUS_HOST=hub
+         - SE_EVENT_BUS_PUBLISH_PORT=4442
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
+   testng-module:
+      image: selenium-docker
+      depends_on: 
+         - chrome
+         - firefox
+         - edge   
+      environment: 
+         - HUB_HOST=hub
+         - MODULE=testng.xml
+         - SE_EVENT_BUS_HOST=hub
+         - SE_EVENT_BUS_PUBLISH_PORT=4442
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
+      volumes:
+         - ./testng_results:/usr/shared/test-output
+         

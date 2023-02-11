@@ -3,13 +3,18 @@ pipeline {
     agent any
     stages {
         stage('Build Jar') {
+         	agent {
+                docker {
+                    image 'maven:3-alpine'
+                    args '-v ./.m2:/root/.m2'
+                }
+            }
             steps {
                 bat "mvn clean install -DskipTests"
             }
         }
         stage('Build Image') {
             steps {
-                bat "docker-compose up -d"
                 bat "docker build -t=selenium-docker ."
             }
         }

@@ -13,6 +13,8 @@ services:
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      networks:
+      - proxynet
    firefox:
       image: selenium/node-firefox
       depends_on: 
@@ -21,7 +23,9 @@ services:
          - HUB_HOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443               
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      networks:
+      - proxynet             
    edge: 
       image: selenium/node-edge
       depends_on: 
@@ -30,9 +34,11 @@ services:
          - HUB_HOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443        
+      networks:
+      - proxynet 
    testng-module:
-      image: ahmedhakem/selenium-docker
+      image: selenium-docker
       depends_on: 
          - chrome
          - firefox
@@ -45,4 +51,9 @@ services:
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
       volumes:
          - ./testng_results:/usr/shared/test-output
-         
+      networks:
+      - proxynet
+networks:
+  proxynet:
+    name: custom_network  
+       

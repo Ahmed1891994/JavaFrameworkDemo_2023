@@ -11,6 +11,7 @@ do
 	sleep 1
 done
 
+echo "$HUBHOST"
 # start the java command
 java -cp JavaFrameworkDemo-0.0.1-SNAPSHOT.jar:JavaFrameworkDemo-0.0.1-SNAPSHOT-tests.jar:libs/* \
     -DHUBHOST=192.168.1.4 -Denv=prod org.testng.TestNG $MODULE

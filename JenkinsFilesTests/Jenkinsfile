@@ -7,11 +7,11 @@ pipeline {
     	     	bat "docker pull ahmedhakem/selenium-docker:selenium-docker"
     	    }	
     	}
-    	//stage("Start Grid"){
-    	//     steps {
-    	     	//bat "docker-compose up -d hub firefox edge chrome"
-    	//    }
-    	//}
+    	stage("Start Grid"){
+    	     steps {
+    	     	bat "docker-compose up -d hub firefox edge chrome"
+    	    }
+    	}
     	stage("Run Tests"){
     	     steps {
     	     	bat "docker-compose up testng-module"

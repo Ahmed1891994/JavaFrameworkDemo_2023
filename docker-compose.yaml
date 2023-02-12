@@ -4,55 +4,47 @@ services:
       image: selenium/hub
       ports:
          - "4444:4444"
+         - "4443:4443"
+         - "4442:4442"
    chrome: 
       image: selenium/node-chrome
       depends_on: 
          - hub
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      networks:
-      - custom_network
    firefox:
       image: selenium/node-firefox
       depends_on: 
          - hub
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-      networks:
-      - custom_network             
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443               
    edge: 
       image: selenium/node-edge
       depends_on: 
          - hub
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443        
-      networks:
-      - custom_network 
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
    testng-module:
-      image: selenium-docker
+      image: ahmedhakem/selenium-docker:selenium-docker
       depends_on: 
          - chrome
          - firefox
-         - edge   
+         - edge
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - MODULE=testng.xml
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
       volumes:
          - ./testng_results:/usr/shared/test-output
-      networks:
-      - custom_network
-networks:
-    custom_network:
-       
+         

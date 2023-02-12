@@ -3,7 +3,7 @@
 # HUB_HOST
 # MODULE
 
-echo "Checking if hub is ready - $HUBHOST"
+echo "Checking if hub is ready - 192.168.1.4"
 
 while [ "$( curl -s http://192.168.1.4:4444/wd/hub/status | jq -r .value.ready )" != "true" ]
 do

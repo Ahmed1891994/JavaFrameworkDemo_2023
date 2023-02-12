@@ -11,7 +11,7 @@ services:
       depends_on: 
          - hub
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
@@ -20,7 +20,7 @@ services:
       depends_on: 
          - hub
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443               
@@ -29,7 +29,7 @@ services:
       depends_on: 
          - hub
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
@@ -40,7 +40,7 @@ services:
          - firefox
          - edge
       environment: 
-         - HUB_HOST=hub
+         - HUBHOST=hub
          - MODULE=testng.xml
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442

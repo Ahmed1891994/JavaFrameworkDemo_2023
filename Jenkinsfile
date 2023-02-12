@@ -3,17 +3,13 @@ pipeline {
     agent any
     stages {
         stage('Build Jar') {
-         	agent {
-                docker {
-                    image 'maven:3-jdk-11-slim'
-                }
-            }
             steps {
                 bat "mvn clean install -DskipTests"
             }
         }
         stage('Build Image') {
             steps {
+                //bat "docker-compose up -d"
                 bat "docker build -t=selenium-docker ."
             }
         }

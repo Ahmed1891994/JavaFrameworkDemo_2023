@@ -3,16 +3,14 @@
 # HUB_HOST
 # MODULE
 
-echo "Checking if hub is ready - 192.168.1.4"
-echo "$localhost"
+echo "Checking if hub is ready - $HUBHOST"
 
-while [ "$( curl -s http://192.168.1.4:4444/wd/hub/status | jq -r .value.ready )" != "true" ]
+while [ "$( curl -s http://$HUBHOST:4444/wd/hub/status | jq -r .value.ready )" != "true" ]
 do
 	sleep 1
 done
 
-echo "$HUBHOST"
 # start the java command
 java -cp JavaFrameworkDemo-0.0.1-SNAPSHOT.jar:JavaFrameworkDemo-0.0.1-SNAPSHOT-tests.jar:libs/* \
-    -DHUBHOST=192.168.1.4 -Denv=prod org.testng.TestNG $MODULE
+    -DHUBHOST=HUBHOST -Denv=prod org.testng.TestNG $MODULE
     

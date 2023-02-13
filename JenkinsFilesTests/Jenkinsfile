@@ -21,7 +21,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'testng_results/**'
-            //bat "docker-compose down"
+            bat "docker-compose down"
         }
     }
 }

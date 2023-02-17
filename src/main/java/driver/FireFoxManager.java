@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import utils.MyLogger;
 
 public class FireFoxManager extends BrowserFactory{
 	
@@ -16,6 +17,7 @@ public class FireFoxManager extends BrowserFactory{
 	@Override
 	protected FirefoxOptions getOptions() {
 		FirefoxOptions firefoxoptions = new FirefoxOptions();
+		MyLogger.info("Add arguments for Firefox options");
 		firefoxoptions.addArguments("--start-maximized");
 		firefoxoptions.addArguments("--disable-infobars");
 		firefoxoptions.addArguments("--disable-notifications");

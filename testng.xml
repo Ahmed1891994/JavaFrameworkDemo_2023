@@ -17,6 +17,5 @@
 		<packages>
 			<package name="tests"></package>
 		</packages>
-	</test>  
-
+	</test>
 </suite> <!-- Suite -->

@@ -1,9 +1,8 @@
 package driver;
 
-import java.net.UnknownHostException;
-
 import org.openqa.selenium.WebDriver;
 import pages.TestBase;
+import utils.MyLogger;
 import Environments.Environment;
 
 public class TargetType extends TestBase{
@@ -20,17 +19,18 @@ public class TargetType extends TestBase{
 	public WebDriver createWebDriverInstance() {
         WebDriver webdriver = null;
         BrowserFactoryManager browserfactorymanager = new BrowserFactoryManager();
-                     
+        MyLogger.info("Choose Target depending on properties file -> " + target);
         switch (target) {
             case "LOCAL":
+            	MyLogger.info("Create local driver");
             	webdriver = browserfactorymanager.get(browser).getDriver();
                 break;
             case "REMOTE":
+            	MyLogger.info("Create remote driver");
             	RemoteManager remotemanager = new RemoteManager(env);
                 webdriver = remotemanager.createRemoteInstance(browserfactorymanager.get(browser).getOptions());
                 break;
-            default:
-            	
+            default:     	
         }
         return webdriver;
     }

@@ -14,11 +14,12 @@ public abstract class BrowserFactory {
 		MyLogger.info("Check if driver null");
 		if(driver == null)
 		{
-			MyLogger.info("Driver setup");
+			MyLogger.info("driver is null then setup driver");
 			driver = Driversetup();
 		}	
 		return driver;
 	}
 
+	@SuppressWarnings("rawtypes")
 	protected abstract AbstractDriverOptions getOptions();
 }

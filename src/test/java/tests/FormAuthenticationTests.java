@@ -21,7 +21,7 @@ public class FormAuthenticationTests extends TestBase{
 	public void VerifyLoginSuccessfully()
 	{
 		HomePage homepage = new HomePage();
-		homepage.EnterToForm_Authentication();
+		homepage.EnterToLinkByText("Form Authentication");
 		
 		LoginPage loginpage = new LoginPage();
 		loginpage.pressLogin("tomsmith","SuperSecretPassword!");
@@ -37,7 +37,7 @@ public class FormAuthenticationTests extends TestBase{
 	public void VerifyLogOutSuccessfully()
 	{
 		HomePage homepage = new HomePage();
-		homepage.EnterToForm_Authentication();
+		homepage.EnterToLinkByText("Form Authentication");
 		
 		LoginPage loginpage = new LoginPage();
 		loginpage.pressLogin("tomsmith","SuperSecretPassword!");
@@ -56,7 +56,7 @@ public class FormAuthenticationTests extends TestBase{
 	public void VerifyLoginFailedWithWrongUserName()
 	{
 		HomePage homepage = new HomePage();
-		homepage.EnterToForm_Authentication();
+		homepage.EnterToLinkByText("Form Authentication");
 		
 		LoginPage loginpage = new LoginPage();
 		loginpage.pressLogin("tomsmithx","SuperSecretPassword!");
@@ -69,7 +69,7 @@ public class FormAuthenticationTests extends TestBase{
 	public void VerifyLoginFailedWithWrongPassword()
 	{
 		HomePage homepage = new HomePage();
-		homepage.EnterToForm_Authentication();
+		homepage.EnterToLinkByText("Form Authentication");
 		
 		LoginPage loginpage = new LoginPage();
 		loginpage.pressLogin("tomsmith","SuperSecretPassword!x");

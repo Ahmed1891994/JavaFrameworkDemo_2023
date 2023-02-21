@@ -6,33 +6,55 @@ services:
          - "4444:4444"
          - "4443:4443"
          - "4442:4442"
+      environment:
+         GRID_MAX_SESSION: 16
+         GRID_BROWSER_TIMEOUT: 300
+         GRID_TIME_OUT: 30
    chrome: 
       image: selenium/node-chrome
       depends_on: 
          - hub
+      shm_size: 1gb
       environment: 
          - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+         - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+         - SE_NODE_MAX_SESSIONS=3
+         - SE_NODE_MAX_INSTANCES=3
+      ports:
+      - "5901:5900"
    firefox:
       image: selenium/node-firefox
       depends_on: 
          - hub
+      shm_size: 1gb
       environment: 
          - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443               
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+         - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+         - SE_NODE_MAX_SESSIONS=3
+         - SE_NODE_MAX_INSTANCES=3   
+      ports:
+      - "5902:5900"       
    edge: 
       image: selenium/node-edge
       depends_on: 
          - hub
+      shm_size: 1gb
       environment: 
          - HUBHOST=hub
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+         - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+         - SE_NODE_MAX_SESSIONS=3
+         - SE_NODE_MAX_INSTANCES=3
+      ports:
+      - "5903:5900"   
    testng-module:
       image: ahmedhakem/selenium-docker:selenium-docker
       depends_on: 
@@ -44,7 +66,7 @@ services:
          - MODULE=testng.xml
          - SE_EVENT_BUS_HOST=hub
          - SE_EVENT_BUS_PUBLISH_PORT=4442
-         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443         
+         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443      
       volumes:
          - ./testng_results:/usr/shared/test-output
          

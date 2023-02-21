@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class PropertiesFIleHandler {
+public class PropertiesFileHandler {
 	//load properties file from folder
 	public Properties loadProperties(String recourcename) throws IOException
 	{

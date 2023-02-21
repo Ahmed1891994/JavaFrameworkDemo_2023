@@ -11,7 +11,7 @@ public class HomePage extends TestBase{
 	@Step("From Home Page Enter to Link step ...")
 	public void EnterToLinkByText(String linkpath)
 	{
-		MyLogger.info("click on " + linkpath);
+		MyLogger.info("User wants to click on " + linkpath);
 		getDriverActions().clickOn(By.xpath("//a[text()='"+linkpath+"']"));
 	}
 	

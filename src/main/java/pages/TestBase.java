@@ -14,7 +14,7 @@ import driver.TargetType;
 import io.qameta.allure.Step;
 import models.FakerDataUser;
 import utils.MyLogger;
-import utils.PropertiesFIleHandler;
+import utils.PropertiesFileHandler;
 
 
 public class TestBase {
@@ -23,7 +23,7 @@ public class TestBase {
 	public ThreadLocal<Environment> Environment = new ThreadLocal<Environment>();
 	public static ThreadLocal<DriverActions> driverActions = new ThreadLocal<DriverActions>();
 	public static ThreadLocal<FakerDataUser> fakeruser = new ThreadLocal<FakerDataUser>();
-	public PropertiesFIleHandler propUtil;
+	public PropertiesFileHandler propUtil;
 	public Properties prop;
 	public Environment cfg;
 	protected TargetType targettype;

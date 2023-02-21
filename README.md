@@ -4,10 +4,13 @@ which provides easy to use syntax, and easy to setup environment according to th
 - This project is based on Selenium WebDriver, TestNG Runner, and Maven
 
 ## 📝Features
-- Support Running Testing on Following Browsers: Chrome, Firefox, & Edge either Normal or Headless
+- Support Running Testing on Following Browsers: Chrome, Firefox, & Edge
 - Support Cross-Browsing Mode
 - Support Running on Selenium Grid
 - Generate Allure Report automatically after Test Execution with screenshots
+- Support being Dockerized
+- Support Logs using log4j
+- Support being being run on jenkins Pipelines
 
 Website URL: [herokuapp](https://the-internet.herokuapp.com/)
 
@@ -22,9 +25,10 @@ Website URL: [herokuapp](https://the-internet.herokuapp.com/)
 
 [GIT](https://git-scm.com/downloads)
 
+[LogExpert](https://github.com/zarunbal/LogExpert/releases/tag/v1.9.0)
+
 ## 📝 The main Frameworks included in the project:
 * Page Object Model (POM) design pattern
-* Data Driven framework
 * TESTNG as testing framework
 
 ## 📝 Framework  covers
@@ -34,9 +38,21 @@ Website URL: [herokuapp](https://the-internet.herokuapp.com/)
 * listeners
 * Reporting using Allure
 * Web Driver Manager
+* Logging using log4j
+* aeonbits.owner library for flexible configuration framework
+* Handle Different Environment (DEV,UAT,PROD)
 
-## 📝 Getting Started
-Clone the __main branch__ in repository: git clone https://github.com/Ahmed1891994/JavaFrameworkDemo_2023.git
-Run the tests: mvn test
+## 📝 How To Run
+### Run Locally
+* Dev environment  -> mvn clean test or mvn clean test -Denv=dev
+* UAT environment  -> mvn clean test -Denv=uat
+### Run On Grid
+* You need first to run docker-compose up in project path as this will Prepare the Grid
+* PROD environment -> mvn clean test -Denv=prod
+### Run From Docker container
+*  you need to get the jar files mvn clean package -Denv=prod
+*  then run a jenkinsfile in master it will do the show
+*  now all data needed being dockerized then pushed to docker hub
+*  then from the branch run the other jenkinsfile from another pipeline.
+*  then it will pull the container from docker hub then run the Tests and save results and logs
 
-in case u want to run in Selenium Grid

@@ -1,4 +1,4 @@
-FROM openjdk:8u212-jdk-alpine3.9
+FROM openjdk:19-jdk-alpine3.16
 
 RUN apk add curl jq
 

@@ -18,10 +18,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.qameta.allure.Attachment;
-import pages.TestBase;
 import utils.MyLogger;
 
-public class DriverActions extends TestBase {
+public class DriverActions {
 	private WebDriver driver;
 	WebDriverWait wait;
 
@@ -148,6 +147,14 @@ public class DriverActions extends TestBase {
 		MyLogger.info("Select Element in dropdown by Index : " + index);
 		Select dropbox = new Select(driver.findElement(element));
 		dropbox.selectByIndex(index);
+	}
+	
+	public String getFirstSelectiontxt(By element) {
+		MyLogger.info("Wait Element to be Visible");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+		MyLogger.info("getFirstSelection");
+		Select dropbox = new Select(driver.findElement(element));
+		return dropbox.getFirstSelectedOption().getText();
 	}
 
 	// ***************************************TextFields**********************************************

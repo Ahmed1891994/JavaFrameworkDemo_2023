@@ -7,7 +7,7 @@ services:
          - "4443:4443"
          - "4442:4442"
       environment:
-         GRID_MAX_SESSION: 16
+         GRID_MAX_SESSION: 20
          GRID_BROWSER_TIMEOUT: 300
          GRID_TIME_OUT: 30
    chrome: 
@@ -21,8 +21,8 @@ services:
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
          - SE_NODE_OVERRIDE_MAX_SESSIONS=true
-         - SE_NODE_MAX_SESSIONS=3
-         - SE_NODE_MAX_INSTANCES=3
+         - SE_NODE_MAX_SESSIONS=10
+         - SE_NODE_MAX_INSTANCES=10
       ports:
       - "5901:5900"
    firefox:
@@ -36,8 +36,8 @@ services:
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
          - SE_NODE_OVERRIDE_MAX_SESSIONS=true
-         - SE_NODE_MAX_SESSIONS=3
-         - SE_NODE_MAX_INSTANCES=3   
+         - SE_NODE_MAX_SESSIONS=10
+         - SE_NODE_MAX_INSTANCES=10
       ports:
       - "5902:5900"       
    edge: 
@@ -51,8 +51,8 @@ services:
          - SE_EVENT_BUS_PUBLISH_PORT=4442
          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
          - SE_NODE_OVERRIDE_MAX_SESSIONS=true
-         - SE_NODE_MAX_SESSIONS=3
-         - SE_NODE_MAX_INSTANCES=3
+         - SE_NODE_MAX_SESSIONS=10
+         - SE_NODE_MAX_INSTANCES=10
       ports:
       - "5903:5900"   
    testng-module:

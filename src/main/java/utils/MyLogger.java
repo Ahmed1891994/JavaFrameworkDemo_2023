@@ -10,16 +10,11 @@ public class MyLogger {
 
 	public static synchronized void startTestCase(String sTestCaseName) {
 		sTestCaseName = sTestCaseName.replaceAll("[^a-zA-Z0-9]", "_").replaceAll("_+", "_");
-		info("\n\n************** Execution Started : " + sTestCaseName + " **************\n");
+		info(getCallInfo() + "\n\n************** Execution Started : " + sTestCaseName + " **************\n");
 	}
 
 	public static void endTestCase(String sTestCaseName) {
-		info("\n\n************** Execution End : " + sTestCaseName + " **************\n");
-	}
-
-	public static void startLog() {
-		String logFileName = "App_Log";
-		ThreadContext.put("logFilename", logFileName);
+		info(getCallInfo() + "\n\n************** Execution End : " + sTestCaseName + " **************\n");
 	}
 
 	public static Logger getCurrentLog() {

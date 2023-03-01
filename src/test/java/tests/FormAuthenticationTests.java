@@ -15,18 +15,21 @@ import pages.TestBase;
 @Listeners(utils.Listener.class)
 
 public class FormAuthenticationTests extends TestBase{
+	HomePage homepage;
+	LoginPage loginpage;
+	SecureAreaPage secureareapage;
 	
 	@Attachment
 	@Test(description="Valid Login Scenario with valid username and password.")
 	public void VerifyLoginSuccessfully()
 	{
-		HomePage homepage = new HomePage();
+		homepage = new HomePage(getDriver());
 		homepage.EnterToLinkByText("Form Authentication");
 		
-		LoginPage loginpage = new LoginPage();
+		LoginPage loginpage = new LoginPage(getDriver());
 		loginpage.pressLogin("tomsmith","SuperSecretPassword!");
 		
-		SecureAreaPage secureareapage = new SecureAreaPage();
+		secureareapage = new SecureAreaPage(getDriver());
 
 		assertTrue(secureareapage.GetAlertText().contains("You logged into a secure area!"));
 		assertEquals(secureareapage.GetPageHeader(), "Secure Area");
@@ -36,13 +39,13 @@ public class FormAuthenticationTests extends TestBase{
 	@Test(description="Valid Login Scenario then logout.")
 	public void VerifyLogOutSuccessfully()
 	{
-		HomePage homepage = new HomePage();
+		homepage = new HomePage(getDriver());
 		homepage.EnterToLinkByText("Form Authentication");
 		
-		LoginPage loginpage = new LoginPage();
+		loginpage = new LoginPage(getDriver());
 		loginpage.pressLogin("tomsmith","SuperSecretPassword!");
 		
-		SecureAreaPage secureareapage = new SecureAreaPage();
+		secureareapage = new SecureAreaPage(getDriver());
 
 		assertTrue(secureareapage.GetAlertText().contains("You logged into a secure area!"));
 		assertEquals(secureareapage.GetPageHeader(), "Secure Area");
@@ -55,10 +58,10 @@ public class FormAuthenticationTests extends TestBase{
 	@Test(description="Failed Login Scenario with invalid username and valid password.")
 	public void VerifyLoginFailedWithWrongUserName()
 	{
-		HomePage homepage = new HomePage();
+		homepage = new HomePage(getDriver());
 		homepage.EnterToLinkByText("Form Authentication");
 		
-		LoginPage loginpage = new LoginPage();
+		loginpage = new LoginPage(getDriver());
 		loginpage.pressLogin("tomsmithx","SuperSecretPassword!");
 		
 		assertTrue(loginpage.GetAlertText().contains("Your username is invalid!"));
@@ -68,10 +71,10 @@ public class FormAuthenticationTests extends TestBase{
 	@Test(description="Failed Login Scenario with valid username and invalid password.")
 	public void VerifyLoginFailedWithWrongPassword()
 	{
-		HomePage homepage = new HomePage();
+		homepage = new HomePage(getDriver());
 		homepage.EnterToLinkByText("Form Authentication");
 		
-		LoginPage loginpage = new LoginPage();
+		loginpage = new LoginPage(getDriver());
 		loginpage.pressLogin("tomsmith","SuperSecretPassword!x");
 		
 		assertTrue(loginpage.GetAlertText().contains("Your password is invalid!"));

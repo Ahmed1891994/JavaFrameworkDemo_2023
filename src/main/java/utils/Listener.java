@@ -16,7 +16,7 @@ public class Listener extends TestBase implements ITestListener {
     @Override		
     public void onStart(ITestContext arg0) {					
         // TODO Auto-generated method stub				
-    	MyLogger.startLog();
+    	
     }		
 
     @Override		

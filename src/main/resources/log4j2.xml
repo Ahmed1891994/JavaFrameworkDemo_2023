@@ -2,15 +2,18 @@
 <Configuration status="WARN">
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT">
-			<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n" />
+			<PatternLayout
+				pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n" />
 		</Console>
 		<Routing name="RoutingAppender">
-			<Routes pattern="$${ctx:logFilename}">
+			<Routes pattern="App_Log">
 				<Route>
-					<RollingFile name="Rolling-${ctx:logFilename}"
-						fileName="logs/${ctx:logFilename}.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
+					<RollingFile name="Rolling-App_Log"
+						fileName="logs/App_Log.log"
+						filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
 						append="false">
-						<PatternLayout pattern="[%-5level] %t %d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n" />
+						<PatternLayout
+							pattern="[%-5level] %t %d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n" />
 						<SizeBasedTriggeringPolicy size="10 MB" />
 					</RollingFile>
 				</Route>

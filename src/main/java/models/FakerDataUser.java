@@ -2,6 +2,8 @@ package models;
 
 import com.github.javafaker.Faker;
 
+import utils.MyLogger;
+
 public class FakerDataUser {
 	public String malefemale_status;
 	public String firstname;
@@ -25,6 +27,7 @@ public class FakerDataUser {
 	
 	public FakerDataUser()
 	{
+		MyLogger.info("make instance of fake user and make fake data");
 		faker = new Faker();
 		malefemale_status = faker.random().nextBoolean()?"m":"F";
 		firstname = faker.name().firstName();

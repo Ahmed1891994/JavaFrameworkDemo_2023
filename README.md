@@ -56,3 +56,24 @@ Website URL: [herokuapp](https://the-internet.herokuapp.com/)
 *  then from the branch run the other jenkinsfile from another pipeline.
 *  then it will pull the container from docker hub then run the Tests and save results and logs
 
+## Using Docker
+[Download Jenkins](https://www.jenkins.io/download/)
+
+Add plugins : maven integration , blueocean , git
+## Docker Builder
+to make a pipline for building project and upload project container to dockerhub
+* Create pipline
+* Choose script pipline from SCM
+* Put github link https://github.com/Ahmed1891994/JavaFrameworkDemo_2023.git
+* Don't forget to add the global credintial which has id DockerHub for the Dockerhub website
+* Put Branch Specifier main
+* Put Script Path "Jenkinsfile"
+
+## Docker Runner
+to make a pipline for running project and get project container from dockerhub
+* Create pipline
+* Choose script pipline from SCM
+* Put github link https://github.com/Ahmed1891994/JavaFrameworkDemo_2023.git
+* Don't forget to add the global credintial which has id DockerHub for the Dockerhub website
+* Put Branch Specifier TestcasesRunner
+* Put Script Path "JenkinsFileaTests/Jenkinsfile"

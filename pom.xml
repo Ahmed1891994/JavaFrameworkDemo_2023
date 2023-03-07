@@ -15,14 +15,14 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<compilerVersion>1.8</compilerVersion>
+					<compilerVersion>11</compilerVersion>
 					<excludes>
 						<exclude>*/*Tests.java</exclude>
 					</excludes>
-					<source>17</source>
-					<target>17</target>
-					<testSource>17</testSource>
-					<testTarget>17</testTarget>
+					<source>11</source>
+					<target>11</target>
+					<testSource>11</testSource>
+					<testTarget>11</testTarget>
 				</configuration>
 			</plugin>
 			<plugin>

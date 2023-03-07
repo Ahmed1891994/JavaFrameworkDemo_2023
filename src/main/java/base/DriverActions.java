@@ -12,6 +12,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -30,10 +31,10 @@ public class DriverActions {
 	}
 
 	// open url using navigate to track history
-		public WebDriver ReturnDriver() {
-			return driver;
-		}
-		
+	public WebDriver ReturnDriver() {
+		return driver;
+	}
+
 	// ************************************URLNavigation**********************************************
 	// open url using navigate to track history
 	public void openURL_History(String URL) {
@@ -67,7 +68,8 @@ public class DriverActions {
 		return result;
 	}
 
-	// ***********************************Buttons & CheckBoxes*****************************************
+	// ***********************************Buttons &
+	// CheckBoxes*****************************************
 	// click on button
 	public void clickOn(By element) {
 		MyLogger.info("Wait Element to be Visible and Clickable");
@@ -77,20 +79,21 @@ public class DriverActions {
 		driver.findElement(element).click();
 	}
 
-	// hover on button
+	// hover on
 	public void hoverOn(By element) {
 		MyLogger.info("Wait Hoverer Element to be Visible");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 		Actions action = new Actions(driver);
 		MyLogger.info("Hover on Element");
-		action.moveToElement(driver.findElement(element)).perform();
+		WebElement webelement = driver.findElement(element);
+		action.moveToElement(webelement).perform();
+		action.moveByOffset(0, 0).perform();
 	}
 
 	// select checkbox
 	public void SelectCheckbox(By element) {
 		MyLogger.info("Check if element is not selected");
-		if (!driver.findElement(element).isSelected())
-		{
+		if (!driver.findElement(element).isSelected()) {
 			MyLogger.info("element is not selected --> Select Element");
 			driver.findElement(element).click();
 		}
@@ -99,12 +102,11 @@ public class DriverActions {
 	// deselect checkbox
 	public void DeselectCheckbox(By element) {
 		MyLogger.info("Check if element is selected");
-		if (driver.findElement(element).isSelected())
-		{
+		if (driver.findElement(element).isSelected()) {
 			MyLogger.info("element is selected --> Unselect Element");
 			driver.findElement(element).click();
 		}
-			
+
 	}
 
 	// select checkbox
@@ -117,12 +119,12 @@ public class DriverActions {
 		act.moveToElement(driver.findElement(element)).click().perform();
 	}
 
-	public void ScrollToElement(By element)
-	{
+	public void ScrollToElement(By element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		MyLogger.info("Scroll To Element");
 		js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(element));
 	}
+
 	// ****************************************DropBox************************************************
 	// Select from dropBox
 	public void selectByVisibleText(By element, String text) {
@@ -148,7 +150,7 @@ public class DriverActions {
 		Select dropbox = new Select(driver.findElement(element));
 		dropbox.selectByIndex(index);
 	}
-	
+
 	public String getFirstSelectiontxt(By element) {
 		MyLogger.info("Wait Element to be Visible");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -224,7 +226,7 @@ public class DriverActions {
 	public boolean checkElementType(By element, String type) {
 		boolean flag = false;
 		String elementtype = driver.findElement(element).getAttribute("type");
-		MyLogger.info("Check If Element type "+ elementtype +" Is equal to given type " + type);
+		MyLogger.info("Check If Element type " + elementtype + " Is equal to given type " + type);
 		if (elementtype.equals(type)) {
 			MyLogger.info("Element types are equal");
 			flag = true;
@@ -235,7 +237,8 @@ public class DriverActions {
 		return flag;
 	}
 
-	// ************************************Element Attributes***************************************
+	// ************************************Element
+	// Attributes***************************************
 	public String getCSSValue(By element, String parameter) {
 		MyLogger.info("Wait Element to be Visible");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -245,34 +248,33 @@ public class DriverActions {
 	}
 
 	// *********************************Wait****************************************
-	public void Wait_Implicit(int timer)
-	{
+	public void Wait_Implicit(int timer) {
 		MyLogger.info("Wait implicitly for " + timer + " seconds ");
 		new WebDriverWait(driver, Duration.ofSeconds(timer));
 		MyLogger.info("Wait Done");
 	}
-	
-	public void Wait_Explicit_Until_Visibility(By element)
-	{
+
+	public void Wait_Explicit_Until_Visibility(By element) {
 		MyLogger.info("Wait Explicitly Until element is visible");
 		wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 		MyLogger.info("Wait Done");
 	}
-	public void Wait_Explicit_Until_NonVisibility(By element)
-	{
+
+	public void Wait_Explicit_Until_NonVisibility(By element) {
 		MyLogger.info("Wait Explicitly Until element is invisible");
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(element)));	
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(element)));
 		MyLogger.info("Wait Done");
 	}
+
 	// ************************************Screenshots***************************************
-	@Attachment(value = "Page screenshot" , type = "image/png")
+	@Attachment(value = "Page screenshot", type = "image/png")
 	public byte[] takeScreenShot(String TestMethodName, WebDriver driver) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		MyLogger.info("Save screen shot");
 		File source = ts.getScreenshotAs(OutputType.FILE);
 		String time = java.time.LocalTime.now().toString().replace(":", "-").substring(0, 5);
 		String date = java.time.LocalDate.now().toString();
-		MyLogger.info("Save screen shot name with time -> "+ time+" and date -> " + date);
+		MyLogger.info("Save screen shot name with time -> " + time + " and date -> " + date);
 		String destination = System.getProperty("user.dir") + "\\ScreenShots\\" + date + "_" + time + "\\"
 				+ TestMethodName + "_" + ThreadLocalRandom.current().nextInt() + ".png";
 

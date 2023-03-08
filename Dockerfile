@@ -8,7 +8,7 @@ WORKDIR /usr/shared
 #Add .jar files to the workspace
 ADD target/framework_jar.jar .
 ADD target/framework_jar-tests.jar .
-ADD target/libs .
+ADD target/libs libs
 
 # Add suitefiles
 ADD testng.xml .

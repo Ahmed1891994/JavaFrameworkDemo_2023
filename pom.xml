@@ -9,6 +9,7 @@
 	<name>JavaFrameworkDemo</name>
 	<url>http://maven.apache.org</url>
 	<build>
+		<finalName>framework_jar</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

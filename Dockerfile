@@ -6,8 +6,8 @@ RUN apk add curl jq
 WORKDIR /usr/shared
 
 #Add .jar files to the workspace
-ADD target/*SNAPSHOT.jar .
-ADD target/*SNAPSHOT-tests.jar .
+ADD target/framework_jar.jar .
+ADD target/framework_jar-tests.jar .
 ADD target/libs .
 
 # Add suitefiles

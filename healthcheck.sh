@@ -11,5 +11,5 @@ do
 done
 
 # start the java command
-java -cp *-SNAPSHOT.jar:*-SNAPSHOT-tests.jar:libs/* -DHUBHOST=$HUBHOST -Denv=prod org.testng.TestNG $MODULE
+java -cp framework_jar.jar:framework_jar-tests.jar:libs/* -DHUBHOST=$HUBHOST -Denv=prod org.testng.TestNG $MODULE
     

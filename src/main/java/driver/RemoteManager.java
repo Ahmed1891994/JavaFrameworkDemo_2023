@@ -15,10 +15,11 @@ public class RemoteManager extends Base{
 	private String port;
 	
 	public RemoteManager() {
-		port = getEnvironment().getgridport();
 		try {
-			MyLogger.info("get ip from Environment variable or current Host");
-			port = new ListenToIPAddress().GetMyIpAddress();
+			port = getEnvironment().getgridport();
+			MyLogger.info("get port from Environment variable with value : " + port);
+			ip = new ListenToIPAddress().GetMyIpAddress();
+			MyLogger.info("get port from Environment variable or current Host with value : " + ip);
 		} catch (UnknownHostException e) {
 			MyLogger.error("there is UnknownHostException issue Please Investegate this");
 		}
@@ -27,7 +28,7 @@ public class RemoteManager extends Base{
 	public RemoteWebDriver createRemoteInstance(MutableCapabilities capability) {
 		RemoteWebDriver remoteWebDriver = null;
 	    try {
-	    	MyLogger.info("Save URL and port for Grid -> " + ip + port);
+	    	MyLogger.info("Save URL and port for Grid -> " + ip + ":" + port);
 	        String gridURL = String.format("http://%s:%s/wd/hub", ip, port);
 	        MyLogger.info("send URL and port and capability to remote driver");
 	        remoteWebDriver = new RemoteWebDriver(new URL(gridURL), capability);

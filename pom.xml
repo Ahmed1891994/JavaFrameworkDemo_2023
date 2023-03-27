@@ -66,8 +66,6 @@
 						<log.directory>${project.basedir}\Output\${maven.build.timestamp}\Logs\</log.directory>
 					</systemPropertyVariables>
 					<suiteXmlFiles>testng.xml</suiteXmlFiles>
-					<parallel>tests</parallel>
-					<threadCount>3</threadCount>
 					<argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.8.10/aspectjweaver-1.8.10.jar"
                     </argLine>
@@ -91,7 +89,6 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.4.0</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->

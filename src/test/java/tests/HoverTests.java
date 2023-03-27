@@ -4,12 +4,10 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import io.qameta.allure.Attachment;
 import pages.HomePage;
 import pages.HoverPage;
 import pages.ProfilePage;
-import pages.TestBase;
 
 @Listeners(utils.Listener.class)
 
@@ -22,14 +20,14 @@ public class HoverTests extends TestBase{
 	@Test(description="Valid Hovering On Images and entering the profile related to image" , dataProvider = "numberofimages")
     public void HoverImg(int index)
     {
-    	homepage = new HomePage(getDriver());
+    	homepage = new HomePage();
 		homepage.EnterToLinkByText("Hovers");
         
-		hoverpage = new HoverPage(getDriver());
+		hoverpage = new HoverPage();
 		hoverpage.HoverImgIndex(index);
 		hoverpage.EnterOnProfile(index);
 		
-		profilepage = new ProfilePage(getDriver());
+		profilepage = new ProfilePage();
         Assert.assertEquals(profilepage.GetProfileText(), "Not Found");
     }
     @DataProvider(name="numberofimages")

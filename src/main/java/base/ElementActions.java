@@ -21,39 +21,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import io.qameta.allure.Attachment;
 import utils.MyLogger;
 
-public class DriverActions {
+public class ElementActions {
 	private WebDriver driver;
 	WebDriverWait wait;
 
-	public DriverActions(WebDriver driver) {
+	public ElementActions(WebDriver driver) {
 		this.driver = driver;
 		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	}
-
-	// open url using navigate to track history
-	public WebDriver ReturnDriver() {
-		return driver;
-	}
-
-	// ************************************URLNavigation**********************************************
-	// open url using navigate to track history
-	public void openURL_History(String URL) {
-		MyLogger.info("navigate to : " + URL);
-		driver.navigate().to(URL);
-	}
-
-	// open url using get() and not care about history
-	public void openURL(String URL) {
-		MyLogger.info("Open URL : " + URL);
-		driver.get(URL);
-	}
-
-	// refresh page
-	public void reloadPage() {
-		MyLogger.info("Refresh Page");
-		driver.navigate().refresh();
-	}
-
+	
 	// Keyboard simulation
 	public void keyboardPress(Keys key) {
 		Actions action = new Actions(driver);

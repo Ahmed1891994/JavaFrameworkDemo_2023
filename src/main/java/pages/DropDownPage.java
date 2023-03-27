@@ -1,21 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-
-import base.DriverActions;
+import base.Base;
 import io.qameta.allure.Step;
 import utils.MyLogger;
 
-public class DropDownPage extends DriverActions{
+public class DropDownPage extends Base{
 	//set locators in the page
     private final By dropdownlist = By.id("dropdown");
     private String[] items ={"Please select an option","Option 1","Option 2"};
-    
-	public DropDownPage(WebDriver driver)
-    {
-		super(driver);
-    }
 
 	@Step("Choose Item by Index '{0}'step ...")
     public void ChooseItem(int itemindex)
@@ -23,7 +16,7 @@ public class DropDownPage extends DriverActions{
         try
         {
         	MyLogger.info("Choose Item by Index : " + itemindex);
-        	selectByIndex(dropdownlist, itemindex);
+        	getElementActions().selectByIndex(dropdownlist, itemindex);
         }
         catch(Exception e)
         {
@@ -31,25 +24,31 @@ public class DropDownPage extends DriverActions{
         }
     }
 	
+	@Step("Reload DropDown Page step ...")
+	public void ReloadDropDownPage()
+	{
+		getBrowserActions().reloadPage();
+	}
+	
 	@Step("Choose Item by txt '{0}' step ...")
     public void ChooseItem(String itemtxt)
     {
     	try 
         {
     		MyLogger.info("Choose Item by txt : " + itemtxt);
-        	selectByVisibleText(dropdownlist, itemtxt);
+    		getElementActions().selectByVisibleText(dropdownlist, itemtxt);
         }
         catch(Exception e)
         {
         	MyLogger.error("No Item is found by txt : " + itemtxt);
         }
     }
-
+	
     public String GetSelectedItem()
     {
         //GetSelectedItem
     	MyLogger.info("get selected Item in drop box");
-    	String result = getFirstSelectiontxt(dropdownlist);
+    	String result = getElementActions().getFirstSelectiontxt(dropdownlist);
     	MyLogger.info("First selected Item in drop box is : " + result);
     	return result;
     }

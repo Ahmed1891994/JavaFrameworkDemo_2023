@@ -1,19 +1,16 @@
 package driver;
 
 import org.openqa.selenium.WebDriver;
-import pages.TestBase;
+import base.Base;
 import utils.MyLogger;
-import Environments.Environment;
 
-public class TargetType extends TestBase{
-	private Environment env;
+public class TargetType extends Base{
 	private String target;
 	private String browser;
 	
-	public TargetType(Environment env,String browser) {
-		this.env = env;
+	public TargetType(String target,String browser) {
 		this.browser = browser;
-		target = env.gettarget();
+		this.target = target;
 	}
 
 	public WebDriver createWebDriverInstance() {
@@ -27,7 +24,7 @@ public class TargetType extends TestBase{
                 break;
             case "REMOTE":
             	MyLogger.info("Create remote driver");
-            	RemoteManager remotemanager = new RemoteManager(env);
+            	RemoteManager remotemanager = new RemoteManager();
                 webdriver = remotemanager.createRemoteInstance(browserfactorymanager.get(browser).getOptions());
                 break;
             default:     	
